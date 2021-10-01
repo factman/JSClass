@@ -1,89 +1,97 @@
-## Classes
+## Functions
 
 <dl>
-<dt><a href="#TodoApp">TodoApp</a></dt>
-<dd></dd>
+<dt><a href="#GetNextId">GetNextId(dataset)</a> ⇒ <code>number</code></dt>
+<dd><p>getNextId</p>
+</dd>
+<dt><a href="#CreateCategory">CreateCategory(label, color)</a></dt>
+<dd><p>createCategory</p>
+</dd>
+<dt><a href="#CreateTask">CreateTask(task, description, categoryId)</a></dt>
+<dd><p>createTask</p>
+</dd>
+<dt><a href="#GetTaskById">GetTaskById(id, list)</a> ⇒ <code>Object</code></dt>
+<dd><p>getTaskById</p>
+</dd>
+<dt><a href="#ToggleTask">ToggleTask(taskId)</a></dt>
+<dd><p>toggleTask</p>
+</dd>
 </dl>
 
 ## Typedefs
 
 <dl>
-<dt><a href="#Task">Task</a> : <code>Object</code></dt>
+<dt><a href="#Task">Task</a> : <code>object</code></dt>
 <dd><p>A todo taskItem</p>
 </dd>
-<dt><a href="#Category">Category</a> : <code>Object</code></dt>
+<dt><a href="#Category">Category</a> : <code>object</code></dt>
 <dd><p>A todo category</p>
 </dd>
+<dt><a href="#DataIndex">DataIndex</a> : <code>object</code></dt>
+<dd></dd>
+<dt><a href="#TodoApp">TodoApp</a> : <code>object</code></dt>
+<dd></dd>
 </dl>
 
-<a name="TodoApp"></a>
+<a name="Dataset"></a>
 
-## TodoApp
-**Kind**: global class  
+## Dataset : <code>enum</code>
+Possible Datasets
 
-* [TodoApp](#TodoApp)
-    * [new TodoApp(root)](#new_TodoApp_new)
-    * [~dataIndex](#TodoApp..dataIndex) : <code>Object</code>
-    * [~tasks](#TodoApp..tasks) : [<code>Array.&lt;Task&gt;</code>](#Task)
-    * [~categories](#TodoApp..categories) : [<code>Array.&lt;Category&gt;</code>](#Category)
-    * [~getNextId(dataset)](#TodoApp..getNextId) ⇒ <code>number</code>
-    * [~createCategory(label, color)](#TodoApp..createCategory)
-    * [~createTask(task, description, categoryId)](#TodoApp..createTask)
-    * [~getTaskById(id, list)](#TodoApp..getTaskById) ⇒ <code>Object</code>
-    * [~toggleTask(taskId)](#TodoApp..toggleTask)
-        * [~task](#TodoApp..toggleTask..task) : <code>Object</code>
+**Kind**: global enum  
+**Read only**: true  
+**Properties**
 
-<a name="new_TodoApp_new"></a>
-
-### new TodoApp(root)
-Closure
-
-
-| Param | Type | Description |
+| Name | Type | Default |
 | --- | --- | --- |
-| root | <code>window</code> \| <code>Node</code> | Global scope instance |
+| Category | <code>string</code> | <code>&quot;categories&quot;</code> | 
+| Task | <code>string</code> | <code>&quot;tasks&quot;</code> | 
 
-<a name="TodoApp..dataIndex"></a>
+<a name="GetNextId"></a>
 
-### TodoApp~dataIndex : <code>Object</code>
-**Kind**: inner constant of [<code>TodoApp</code>](#TodoApp)  
-<a name="TodoApp..tasks"></a>
-
-### TodoApp~tasks : [<code>Array.&lt;Task&gt;</code>](#Task)
-**Kind**: inner constant of [<code>TodoApp</code>](#TodoApp)  
-<a name="TodoApp..categories"></a>
-
-### TodoApp~categories : [<code>Array.&lt;Category&gt;</code>](#Category)
-**Kind**: inner constant of [<code>TodoApp</code>](#TodoApp)  
-<a name="TodoApp..getNextId"></a>
-
-### TodoApp~getNextId(dataset) ⇒ <code>number</code>
+## GetNextId(dataset) ⇒ <code>number</code>
 getNextId
 
-**Kind**: inner method of [<code>TodoApp</code>](#TodoApp)  
+**Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| dataset | <code>string</code> | 
+| dataset | [<code>Dataset</code>](#Dataset) | 
 
-<a name="TodoApp..createCategory"></a>
+**Example**  
+```js
+const { TodoApp } = require('./src/TodoApp');
 
-### TodoApp~createCategory(label, color)
+// dataset: 'tasks' or 'categories'
+// OR
+// dataset: Dataset.Task or Dataset.Category
+TodoApp.getNextId('tasks');
+```
+<a name="CreateCategory"></a>
+
+## CreateCategory(label, color)
 createCategory
 
-**Kind**: inner method of [<code>TodoApp</code>](#TodoApp)  
+**Kind**: global function  
 
 | Param | Type |
 | --- | --- |
 | label | <code>string</code> | 
 | color | <code>string</code> | 
 
-<a name="TodoApp..createTask"></a>
+**Example**  
+```js
+const { TodoApp } = require('./src/TodoApp');
 
-### TodoApp~createTask(task, description, categoryId)
+// color: colorName(blue) or colorCode(#0000FF)
+TodoApp.createCategory('Office', 'blue');
+```
+<a name="CreateTask"></a>
+
+## CreateTask(task, description, categoryId)
 createTask
 
-**Kind**: inner method of [<code>TodoApp</code>](#TodoApp)  
+**Kind**: global function  
 
 | Param | Type |
 | --- | --- |
@@ -91,36 +99,51 @@ createTask
 | description | <code>string</code> | 
 | categoryId | <code>number</code> | 
 
-<a name="TodoApp..getTaskById"></a>
+**Example**  
+```js
+const { TodoApp } = require('./src/TodoApp');
 
-### TodoApp~getTaskById(id, list) ⇒ <code>Object</code>
+TodoApp.createTask('Task title', 'Task description', 1);
+```
+<a name="GetTaskById"></a>
+
+## GetTaskById(id, list) ⇒ <code>Object</code>
 getTaskById
 
-**Kind**: inner method of [<code>TodoApp</code>](#TodoApp)  
+**Kind**: global function  
 
 | Param | Type |
 | --- | --- |
 | id | <code>number</code> | 
 | list | [<code>Array.&lt;Task&gt;</code>](#Task) \| [<code>Array.&lt;Category&gt;</code>](#Category) | 
 
-<a name="TodoApp..toggleTask"></a>
+**Example**  
+```js
+const { TodoApp } = require('./src/TodoApp');
 
-### TodoApp~toggleTask(taskId)
+// list: Task[] or Category[]
+const task = TodoApp.getTaskById(1, list);
+```
+<a name="ToggleTask"></a>
+
+## ToggleTask(taskId)
 toggleTask
 
-**Kind**: inner method of [<code>TodoApp</code>](#TodoApp)  
+**Kind**: global function  
 
 | Param | Type |
 | --- | --- |
 | taskId | <code>number</code> | 
 
-<a name="TodoApp..toggleTask..task"></a>
+**Example**  
+```js
+const { TodoApp } = require('./src/TodoApp');
 
-#### toggleTask~task : <code>Object</code>
-**Kind**: inner constant of [<code>toggleTask</code>](#TodoApp..toggleTask)  
+TodoApp.toggleTask(1);
+```
 <a name="Task"></a>
 
-## Task : <code>Object</code>
+## Task : <code>object</code>
 A todo taskItem
 
 **Kind**: global typedef  
@@ -137,7 +160,7 @@ A todo taskItem
 
 <a name="Category"></a>
 
-## Category : <code>Object</code>
+## Category : <code>object</code>
 A todo category
 
 **Kind**: global typedef  
@@ -148,4 +171,30 @@ A todo category
 | label | <code>string</code> | 
 | color | <code>string</code> | 
 | id | <code>number</code> | 
+
+<a name="DataIndex"></a>
+
+## DataIndex : <code>object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| tasks | <code>number</code> | 
+| categories | <code>number</code> | 
+
+<a name="TodoApp"></a>
+
+## TodoApp : <code>object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| dataIndex | [<code>DataIndex</code>](#DataIndex) | 
+| categories | [<code>Array.&lt;Category&gt;</code>](#Category) | 
+| tasks | [<code>Array.&lt;Task&gt;</code>](#Task) | 
+| createCategory | [<code>CreateCategory</code>](#CreateCategory) | 
+| createTask | [<code>CreateTask</code>](#CreateTask) | 
+| toggleTask | [<code>ToggleTask</code>](#ToggleTask) | 
 

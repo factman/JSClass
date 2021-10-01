@@ -1,19 +1,22 @@
 {
-  "name": "todo-app",
-  "version": "0.0.1",
-  "description": "A todo application in JS",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node .",
-    "doc": "npx jsdoc-to-markdown ./src/TodoApp.js >> README.md"
-  },
-  "keywords": [
-    "todo",
-    "list",
-    "category",
-    "color"
-  ],
-  "author": "ayo",
-  "license": "MIT"
+    "name": "todo-app",
+    "version": "0.0.1",
+    "description": "A todo application in JS",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node .",
+        "doc": "jsdoc2md ./src/TodoApp.js > README.md"
+    },
+    "keywords": [
+        "todo",
+        "list",
+        "category",
+        "color"
+    ],
+    "author": "ayo",
+    "license": "MIT",
+    "devDependencies": {
+        "jsdoc-to-markdown": "^7.0.1"
+    }
 }

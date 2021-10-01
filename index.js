@@ -1,6 +1,8 @@
 "use strict";
 
-const {TodoApp} = require('./src/TodoApp');
+const TodoApp = require('./src/TodoApp');
+
+console.log(TodoApp);
 
 TodoApp.createCategory("Work", "red");
 console.table(TodoApp.dataIndex);
@@ -26,6 +28,6 @@ TodoApp.toggleTask(3);
 console.table(TodoApp.tasks);
 
 TodoApp.categories.forEach((category) => {
-  console.table(category);
-  console.table(TodoApp.tasks.filter((task) => task.categoryId === category.id));
+    console.table(category);
+    console.table(TodoApp.tasks.filter((task) => task.categoryId === category.id));
 });
